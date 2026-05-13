@@ -16,8 +16,9 @@ section .data
                       db "2. Food", 10
                       db "3. Juice", 10
                       db "4. Water", 10
+                      db "5. Exit", 10
                       db "0. Done / View Receipt", 10
-                      db "Select (0-4): ", 0
+                      db "Select (0-5): ", 0
 
     msg_coffee_menu   db 10, "--- Coffee ---", 10
                       db "1. Espresso      RM  4.00", 10
