@@ -895,7 +895,8 @@ atoi:
     sub  dl, '0'
     imul eax, eax, 10
     add  eax, edx
-    inc  ecx    jmp  .lp
+    inc  ecx
+    jmp  .lp
 .done:
     ret
 
