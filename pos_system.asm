@@ -237,6 +237,8 @@ coffee_section:
     mov  ecx, [saved_choice]
     dec  ecx
     mov  eax, [coffee_prices + ecx*4]
+    mov  edx, [saved_qty]
+    imul eax, edx
     add  [total_sen], eax
     print_str msg_added
     mov  eax, [saved_choice]
@@ -281,11 +283,6 @@ espresso_done:
     mov  [item_counter], eax
     cmp  eax, 0
     je   main_loop
-    mov  ecx, [saved_choice]
-    dec  ecx
-    mov  eax, [coffee_prices + ecx*4]
-    add  [total_sen], eax
-    print_str msg_added
     jmp  espresso_addon_start
 espresso_inv:
     print_str msg_invalid
@@ -325,11 +322,6 @@ latte_done:
     mov  [item_counter], eax
     cmp  eax, 0
     je   main_loop
-    mov  ecx, [saved_choice]
-    dec  ecx
-    mov  eax, [coffee_prices + ecx*4]
-    add  [total_sen], eax
-    print_str msg_added
     jmp  latte_addon_start
 latte_inv:
     print_str msg_invalid
@@ -359,6 +351,8 @@ food_section:
     mov  ecx, [saved_choice]
     dec  ecx
     mov  eax, [food_prices + ecx*4]
+    mov  edx, [saved_qty]
+    imul eax, edx
     add  [total_sen], eax
     print_str msg_added
     mov  eax, [saved_choice]
@@ -403,11 +397,6 @@ sandwich_done:
     mov  [item_counter], eax
     cmp  eax, 0
     je   main_loop
-    mov  ecx, [saved_choice]
-    dec  ecx
-    mov  eax, [food_prices + ecx*4]
-    add  [total_sen], eax
-    print_str msg_added
     jmp  sandwich_addon_start
 sandwich_inv:
     print_str msg_invalid
@@ -447,11 +436,6 @@ cake_done:
     mov  [item_counter], eax
     cmp  eax, 0
     je   main_loop
-    mov  ecx, [saved_choice]
-    dec  ecx
-    mov  eax, [food_prices + ecx*4]
-    add  [total_sen], eax
-    print_str msg_added
     jmp  cake_addon_start
 cake_inv:
     print_str msg_invalid
@@ -481,6 +465,8 @@ juice_section:
     mov  ecx, [saved_choice]
     dec  ecx
     mov  eax, [juice_prices + ecx*4]
+    mov  edx, [saved_qty]
+    imul eax, edx
     add  [total_sen], eax
     print_str msg_added
     mov  eax, [saved_choice]
@@ -525,11 +511,6 @@ orange_done:
     mov  [item_counter], eax
     cmp  eax, 0
     je   main_loop
-    mov  ecx, [saved_choice]
-    dec  ecx
-    mov  eax, [juice_prices + ecx*4]
-    add  [total_sen], eax
-    print_str msg_added
     jmp  orange_addon_start
 orange_inv:
     print_str msg_invalid
@@ -569,11 +550,6 @@ mango_done:
     mov  [item_counter], eax
     cmp  eax, 0
     je   main_loop
-    mov  ecx, [saved_choice]
-    dec  ecx
-    mov  eax, [juice_prices + ecx*4]
-    add  [total_sen], eax
-    print_str msg_added
     jmp  mango_addon_start
 mango_inv:
     print_str msg_invalid
@@ -603,6 +579,8 @@ water_section:
     mov  ecx, [saved_choice]
     dec  ecx
     mov  eax, [water_prices + ecx*4]
+    mov  edx, [saved_qty]
+    imul eax, edx
     add  [total_sen], eax
     print_str msg_added
     mov  eax, [saved_choice]
@@ -647,11 +625,6 @@ mineral_done:
     mov  [item_counter], eax
     cmp  eax, 0
     je   main_loop
-    mov  ecx, [saved_choice]
-    dec  ecx
-    mov  eax, [water_prices + ecx*4]
-    add  [total_sen], eax
-    print_str msg_added
     jmp  mineral_addon_start
 mineral_inv:
     print_str msg_invalid
@@ -691,11 +664,6 @@ sparkling_done:
     mov  [item_counter], eax
     cmp  eax, 0
     je   main_loop
-    mov  ecx, [saved_choice]
-    dec  ecx
-    mov  eax, [water_prices + ecx*4]
-    add  [total_sen], eax
-    print_str msg_added
     jmp  sparkling_addon_start
 sparkling_inv:
     print_str msg_invalid
