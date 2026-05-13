@@ -210,6 +210,8 @@ main_loop:
     je   juice_section
     cmp  eax, 4
     je   water_section
+    cmp  eax, 5
+    je   exit_program
     print_str msg_invalid
     jmp  main_loop
 
