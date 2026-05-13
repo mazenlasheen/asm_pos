@@ -234,12 +234,15 @@ coffee_section:
     jle  coffee_inv
     mov  [saved_qty], eax
     mov  [item_counter], eax
+    
+    ; Calculate price * quantity using imul
     mov  ecx, [saved_choice]
     dec  ecx
-    mov  eax, [coffee_prices + ecx*4]
-    mov  edx, [saved_qty]
-    imul eax, edx
-    add  [total_sen], eax
+    mov  eax, [coffee_prices + ecx*4]  ; price of one unit
+    mov  edx, [saved_qty]               ; quantity
+    imul eax, edx                       ; eax = price * quantity
+    add  [total_sen], eax               ; add full amount to total
+    
     print_str msg_added
     mov  eax, [saved_choice]
     cmp  eax, 1
@@ -348,12 +351,15 @@ food_section:
     jle  food_inv
     mov  [saved_qty], eax
     mov  [item_counter], eax
+    
+    ; Calculate price * quantity using imul
     mov  ecx, [saved_choice]
     dec  ecx
-    mov  eax, [food_prices + ecx*4]
-    mov  edx, [saved_qty]
-    imul eax, edx
-    add  [total_sen], eax
+    mov  eax, [food_prices + ecx*4]    ; price of one unit
+    mov  edx, [saved_qty]               ; quantity
+    imul eax, edx                       ; eax = price * quantity
+    add  [total_sen], eax               ; add full amount to total
+    
     print_str msg_added
     mov  eax, [saved_choice]
     cmp  eax, 1
@@ -462,12 +468,15 @@ juice_section:
     jle  juice_inv
     mov  [saved_qty], eax
     mov  [item_counter], eax
+    
+    ; Calculate price * quantity using imul
     mov  ecx, [saved_choice]
     dec  ecx
-    mov  eax, [juice_prices + ecx*4]
-    mov  edx, [saved_qty]
-    imul eax, edx
-    add  [total_sen], eax
+    mov  eax, [juice_prices + ecx*4]   ; price of one unit
+    mov  edx, [saved_qty]               ; quantity
+    imul eax, edx                       ; eax = price * quantity
+    add  [total_sen], eax               ; add full amount to total
+    
     print_str msg_added
     mov  eax, [saved_choice]
     cmp  eax, 1
@@ -576,12 +585,15 @@ water_section:
     jle  water_inv
     mov  [saved_qty], eax
     mov  [item_counter], eax
+    
+    ; Calculate price * quantity using imul
     mov  ecx, [saved_choice]
     dec  ecx
-    mov  eax, [water_prices + ecx*4]
-    mov  edx, [saved_qty]
-    imul eax, edx
-    add  [total_sen], eax
+    mov  eax, [water_prices + ecx*4]   ; price of one unit
+    mov  edx, [saved_qty]               ; quantity
+    imul eax, edx                       ; eax = price * quantity
+    add  [total_sen], eax               ; add full amount to total
+    
     print_str msg_added
     mov  eax, [saved_choice]
     cmp  eax, 1
@@ -883,8 +895,7 @@ atoi:
     sub  dl, '0'
     imul eax, eax, 10
     add  eax, edx
-    inc  ecx
-    jmp  .lp
+    inc  ecx    jmp  .lp
 .done:
     ret
 
@@ -953,6 +964,7 @@ print_2digit:
     mov  edx, 2
     int  0x80
     ret
+
 exit_program:
     mov eax, 1
     xor ebx, ebx
